@@ -23,7 +23,7 @@ app.post('/tasks', (req, res) => {
       return res.status(400).json({ error: 'O campo "title" é obrigatório.' });
     }
 
-    const newTask = banco.createTask(title, description);
+    const newTask = banco.createTask(title, description, priority);
 
     res.status(201).json(newTask);
 
