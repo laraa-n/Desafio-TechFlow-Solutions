@@ -9,16 +9,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ArthurMends777/techflow-solutions.git"
+    "url": "https://github.com/laraa-n/Desafio-TechFlow-Solutions"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/ArthurMends777/techflow-solutions/issues"
+    "url": "https://github.com/laraa-n/Desafio-TechFlow-Solutions"
   },
-  "homepage": "https://github.com/ArthurMends777/techflow-solutions#readme",
+  "homepage": "https://github.com/laraa-n/Desafio-TechFlow-Solutions#readme",
   "dependencies": {
     "express": "^5.1.0"
   },

@@ -17,7 +17,7 @@ app.get('/tasks', (req, res) => {
 
 app.post('/tasks', (req, res) => {
   try {
-    const { title, description } = req.body;
+    const { title, description, priority } = req.body;
 
     if (!title) {
       return res.status(400).json({ error: 'O campo "title" é obrigatório.' });
