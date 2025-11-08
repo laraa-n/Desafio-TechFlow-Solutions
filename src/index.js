@@ -6,8 +6,15 @@ const PORT = 3000;
 
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('API rodando!');
+app.get('/tasks', (req, res) => {
+  try {
+    const allTasks = banco.getAllTasks();
+
+    res.status(200).json(allTasks);
+
+  } catch (error) {
+    res.status(500).json({ error: 'Erro interno ao buscar as tarefas.' });
+  }
 });
 
 app.post('/tasks', (req, res) => {
