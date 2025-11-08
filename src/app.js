@@ -4,6 +4,12 @@ const app = express();
 
 app.use(express.json());
 
+app.use(express.static('public'));
+
+app.get('/', (req, res) => {
+  res.send('API da TechFlow Solutions rodando!');
+});
+
 app.get('/tasks', (req, res) => {
   try {
     const allTasks = banco.getAllTasks();

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas - TechFlow</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 Minha Lista de Tarefas</h1>
+            <p class="subtitle">Organize suas atividades com facilidade</p>
+        </header>
+
+        <div class="main-content">
+            <!-- Seção de Adicionar Tarefa -->
+            <section class="add-task-section">
+                <h2>Adicionar Nova Tarefa</h2>
+                <form id="taskForm" class="task-form">
+                    <div class="form-group">
+                        <label for="taskTitle">Título *</label>
+                        <input 
+                            type="text" 
+                            id="taskTitle" 
+                            placeholder="Digite o título da tarefa" 
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taskDescription">Descrição</label>
+                        <textarea 
+                            id="taskDescription" 
+                            placeholder="Digite a descrição (opcional)" 
+                            rows="3"
+                        ></textarea>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="taskPriority">Prioridade</label>
+                            <select id="taskPriority">
+                                <option value="Baixa">Baixa</option>
+                                <option value="Média" selected>Média</option>
+                                <option value="Alta">Alta</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">
+                            ➕ Adicionar Tarefa
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Seção de Filtros -->
+            <section class="filters-section">
+                <h2>Filtrar Tarefas</h2>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">
+                        Todas (0)
+                    </button>
+                    <button class="filter-btn" data-filter="A Fazer">
+                        A Fazer (0)
+                    </button>
+                    <button class="filter-btn" data-filter="Em Progresso">
+                        Em Progresso (0)
+                    </button>
+                    <button class="filter-btn" data-filter="Concluída">
+                        Concluída (0)
+                    </button>
+                </div>
+            </section>
+
+            <!-- Seção de Tarefas -->
+            <section class="tasks-section">
+                <div class="tasks-header">
+                    <h2>Tarefas</h2>
+                    <span class="task-count">Total: 0</span>
+                </div>
+
+                <div id="tasksList" class="tasks-list">
+                    <div class="empty-state">
+                        <p>📝 Nenhuma tarefa criada ainda.</p>
+                        <p>Crie sua primeira tarefa acima!</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Modal de Edição -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Editar Tarefa</h2>
+                <button class="close-btn">&times;</button>
+            </div>
+            <form id="editForm" class="task-form">
+                <div class="form-group">
+                    <label for="editTaskTitle">Título *</label>
+                    <input 
+                        type="text" 
+                        id="editTaskTitle" 
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="editTaskDescription">Descrição</label>
+                    <textarea 
+                        id="editTaskDescription" 
+                        rows="3"
+                    ></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editTaskStatus">Status</label>
+                        <select id="editTaskStatus">
+                            <option value="A Fazer">A Fazer</option>
+                            <option value="Em Progresso">Em Progresso</option>
+                            <option value="Concluída">Concluída</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="editTaskPriority">Prioridade</label>
+                        <select id="editTaskPriority">
+                            <option value="Baixa">Baixa</option>
+                            <option value="Média">Média</option>
+                            <option value="Alta">Alta</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelEditBtn">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary">
+                        Salvar Alterações
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Notificação -->
+    <div id="notification" class="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
