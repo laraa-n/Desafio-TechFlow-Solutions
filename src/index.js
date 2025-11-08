@@ -54,6 +54,23 @@ app.put('/tasks/:id', (req, res) => {
   }
 });
 
+app.delete('/tasks/:id', (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const deletedTask = banco.deleteTask(id);
+
+    if (deletedTask) {
+      res.status(204).send();
+    } else {
+      res.status(404).json({ error: 'Tarefa não encontrada.' });
+    }
+
+  } catch (error) {
+    res.status(500).json({ error: 'Erro interno ao deletar a tarefa.' });
+  }
+});
+
 app.listen(PORT, () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 });

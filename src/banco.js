@@ -36,6 +36,19 @@ module.exports = {
         taskToUpdate.status = updates.status || taskToUpdate.status;
 
         return taskToUpdate;
+    },
+    
+    deleteTask: (id) => {
+        const taskId = parseInt(id, 10);
+        const taskIndex = tasksDB.findIndex(task => task.id === taskId);
+
+        if (taskIndex === -1) {
+        return null;
+        }
+
+        const deletedTask = tasksDB.splice(taskIndex, 1);
+
+        return deletedTask[0];
     }
 };
 
