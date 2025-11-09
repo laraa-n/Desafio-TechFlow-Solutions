@@ -10,7 +10,6 @@ let editingTaskId = null;
 const taskForm = document.getElementById('taskForm');
 const taskTitle = document.getElementById('taskTitle');
 const taskDescription = document.getElementById('taskDescription');
-const taskPriority = document.getElementById('taskPriority');
 const tasksList = document.getElementById('tasksList');
 const filterButtons = document.querySelectorAll('.filter-btn');
 const editModal = document.getElementById('editModal');
@@ -18,7 +17,6 @@ const editForm = document.getElementById('editForm');
 const editTaskTitle = document.getElementById('editTaskTitle');
 const editTaskDescription = document.getElementById('editTaskDescription');
 const editTaskStatus = document.getElementById('editTaskStatus');
-const editTaskPriority = document.getElementById('editTaskPriority');
 const cancelEditBtn = document.getElementById('cancelEditBtn');
 const closeModalBtn = document.querySelector('.close-btn');
 const notification = document.getElementById('notification');
@@ -87,8 +85,7 @@ async function handleAddTask(e) {
 
     const newTask = {
         title: taskTitle.value.trim(),
-        description: taskDescription.value.trim(),
-        priority: taskPriority.value
+        description: taskDescription.value.trim()
     };
 
     if (!newTask.title) {
@@ -114,8 +111,6 @@ async function handleAddTask(e) {
 
         // Limpar formulário
         taskForm.reset();
-        taskPriority.value = 'Média';
-
         renderTasks();
         updateFilterCounts();
         showNotification('✅ Tarefa criada com sucesso!', 'success');
@@ -135,8 +130,6 @@ function openEditModal(taskId) {
     editTaskTitle.value = task.title;
     editTaskDescription.value = task.description;
     editTaskStatus.value = task.status;
-    editTaskPriority.value = task.priority;
-
     editModal.classList.add('active');
 }
 
@@ -154,8 +147,7 @@ async function handleEditTask(e) {
     const updates = {
         title: editTaskTitle.value.trim(),
         description: editTaskDescription.value.trim(),
-        status: editTaskStatus.value,
-        priority: editTaskPriority.value
+        status: editTaskStatus.value
     };
 
     try {
@@ -258,10 +250,6 @@ function getFilteredTasks() {
 function createTaskCard(task) {
     const statusClass = task.status === 'Concluída' ? 'completed' : 
                         task.status === 'Em Progresso' ? 'in-progress' : '';
-    
-    const priorityClass = task.priority === 'Alta' ? '' : 
-                         task.priority === 'Média' ? 'medium' : 'low';
-
     const formattedDate = formatDate(task.createdAt);
 
     return `
@@ -272,9 +260,7 @@ function createTaskCard(task) {
                     <span class="task-badge badge-status ${statusClass}">
                         ${task.status}
                     </span>
-                    <span class="task-badge badge-priority ${priorityClass}">
-                        🎯 ${task.priority}
-                    </span>
+
                 </div>
                 
                 ${task.description ? `

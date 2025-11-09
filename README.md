@@ -102,4 +102,6 @@ http://localhost:3000/index.html
 Você poderá interagir com a aplicação de Lista de Tarefas, que se comunicará com a API do backend rodando na mesma porta.
 
 ---
-*Documentação gerada por **Manus AI***
+### 4. Mudança de Escopo 
+
+Após a entrega o cliente solicitou que a função de "Prioridades" fosse removida pois era desnecessária. 

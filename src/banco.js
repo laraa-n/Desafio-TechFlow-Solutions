@@ -7,7 +7,6 @@ module.exports = {
         id: idCounter++,
         title: title,
         description: description || "",
-        priority: priority || 'Média',
         status: 'A Fazer',
         createdAt: new Date()
         };
@@ -35,7 +34,6 @@ module.exports = {
         taskToUpdate.title = updates.title || taskToUpdate.title;
         taskToUpdate.description = updates.description || taskToUpdate.description;
         taskToUpdate.status = updates.status || taskToUpdate.status;
-        taskToUpdate.priority = updates.priority || taskToUpdate.priority;
         return taskToUpdate;
     },
 
